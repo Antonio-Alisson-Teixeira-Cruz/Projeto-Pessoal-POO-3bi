@@ -17,3 +17,5 @@ Páginas: ${this.paginas}.
 Exemplares disponiveis: ${this.exemplares}.`
     }
 }
+
+module.exports = Livro
