@@ -1,15 +1,30 @@
 class Usuario {
+    #nome
+    #idade
     constructor(nome, idade) {
-        this.nome = nome
-        this.idade = idade
+        this.#nome = nome
+        this.#idade = idade
+        Usuario.totalUsuarios++
     }
 
-    acessoPainel() {
+    static acessoPainel() {
         return "Acesso genérico ao sistema."
     }
 
-    static contarUsuarios (){
-        return `Total de usuários criados: ${this.totalUsuarios}`
+    get nome() {
+        return this.#nome
+    }
+
+    set nome(valor) {
+        this.#nome = valor
+    }
+
+    get idade() {
+        return this.#nome
+    }
+
+    set idade(valor) {
+        this.#idade = valor
     }
 }
 

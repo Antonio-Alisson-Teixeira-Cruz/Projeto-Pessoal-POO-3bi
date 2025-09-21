@@ -10,10 +10,10 @@ class Livro {
 
     mostrarInformacoes() {
         return `Título: ${this.titulo}
-Autor: ${this.autor}
-genero: ${this.genero}
-Ano de Publicação: ${this.anoPublicacao}
-Páginas: ${this.paginas}
-Exemplares disponiveis: ${this.exemplares}`
+Autor: ${this.autor}.
+genero: ${this.genero}.
+Ano de Publicação: ${this.anoPublicacao}.
+Páginas: ${this.paginas}.
+Exemplares disponiveis: ${this.exemplares}.`
     }
 }

@@ -1,39 +1,49 @@
 const Usuario = require("./Usuario")
 
 class Aluno extends Usuario {
-    //#livroEmprestado
-    constructor(nome, idade, livroEmprestado = null) {
+    static totalAluno = 0
+    #livroEmprestado
+    constructor(nome, idade, livroEmprestado = null, turma) {
         super(nome, idade)
-        this.livroEmprestado = livroEmprestado
+        this.#livroEmprestado = livroEmprestado
+        this.turma = turma
+        Aluno.totalAluno++
     }
 
-    /*get livroEmprestado() {
-        return this.#livroEmprestado
-    }*/
+    static totalAlunos() {
+        return `Total de alunos cadastrados: ${Aluno.totalAluno}`
+    }
 
-    acessoPainel() {
-       return "Painel do aluno: Pegar e Devolver livros"
-   }
+    static acessoPainel() {
+       return "Painel do aluno: Pegar e Devolver livros."
+    }
+
+    mostrarInformacoes() {
+        return `Nome: ${this.nome}
+Idade: ${this.idade}
+Turma: ${this.turma}
+Livro emprestado: ${this.#livroEmprestado ? this.#livroEmprestado.titulo : "Nenhum"}`
+    }
     
-    pegarLivro(livro, monitor) {
-        if(this.livroEmprestado == null && livro.exemplares > 0) {
-            this.livroEmprestado = livro
+    pegarLivro(livro, bibliotecario) {
+        if(this.#livroEmprestado == null && livro.exemplares > 0) {
+            this.#livroEmprestado = livro
             livro.exemplares--
-            return `O livro ${this.livroEmprestado} foi pego pelo ${this.nome} com a supervisão do bibliotecario ${monitor.nome}`
-        } else if(this.livroEmprestado !== null){
+            return `O livro ${this.#livroEmprestado.titulo} foi pego pelo ${this.nome} com a supervisão do bibliotecario ${bibliotecario.nome}.`
+        } else if(this.#livroEmprestado !== null){
             return `O aluno ${this.nome} já tem um livro emprestado, devolva para pegar outro.`
         } else if(livro.exemplares == 0) {
-            return `Não há exemplares disponíveis desse livro em estoque`
+            return `Não há exemplares disponíveis desse livro em estoque.`
         }
     }
 
-    devolverLivro(monitor) {
+    devolverLivro(bibliotecario) {
         if(this.livroEmprestado == null) {
             return `O aluno ${this.nome} não tem nenhum livro em posse.`
         } else {
-            livro.exemplares++
-            this.livroEmprestado = null
-            return `O aluno ${this.nome} devolveu o livro que estava emprestado com a supervisão do bibliotecario ${monitor.nome}`
+            this.#livroEmprestado.exemplares++
+            this.#livroEmprestado = null
+            return `O aluno ${this.nome} devolveu o livro que estava emprestado com a supervisão do bibliotecario ${bibliotecario.nome}`
         }
     }
 }
