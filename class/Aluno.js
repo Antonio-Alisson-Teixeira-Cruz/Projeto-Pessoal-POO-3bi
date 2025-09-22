@@ -25,11 +25,11 @@ Turma: ${this.turma}
 Livro emprestado: ${this.#livroEmprestado ? this.#livroEmprestado.titulo : "Nenhum"}`
     }
     
-    pegarLivro(livro, bibliotecario) {
+    pegarLivro(livro) {
         if(this.#livroEmprestado == null && livro.exemplares > 0) {
             this.#livroEmprestado = livro
             livro.exemplares--
-            return `O livro ${this.#livroEmprestado.titulo} foi pego pelo ${this.nome} com a supervisão do bibliotecario ${bibliotecario.nome}.`
+            return `O livro ${this.#livroEmprestado.titulo} foi pego pelo aluno ${this.nome}.`
         } else if(this.#livroEmprestado !== null){
             return `O aluno ${this.nome} já tem um livro emprestado, devolva para pegar outro.`
         } else if(livro.exemplares == 0) {
@@ -37,13 +37,13 @@ Livro emprestado: ${this.#livroEmprestado ? this.#livroEmprestado.titulo : "Nenh
         }
     }
 
-    devolverLivro(bibliotecario) {
+    devolverLivro() {
         if(this.livroEmprestado == null) {
             return `O aluno ${this.nome} não tem nenhum livro em posse.`
         } else {
             this.#livroEmprestado.exemplares++
             this.#livroEmprestado = null
-            return `O aluno ${this.nome} devolveu o livro que estava emprestado com a supervisão do bibliotecario ${bibliotecario.nome}`
+            return `O aluno ${this.nome} devolveu o livro que estava emprestado.`
         }
     }
 }

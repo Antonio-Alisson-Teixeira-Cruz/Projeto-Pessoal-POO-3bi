@@ -2,7 +2,7 @@ const Usuario = require("./Usuario")
 
 class Bibliotecario extends Usuario {
     static acessoPainel() {
-        return "Painel do bibliotecário: Adicionar e remover livro do estoque, entregar e receber livros do aluno."
+        return "Painel do bibliotecário: Adicionar e remover livro do estoque."
     }
 
     adicionarLivro(livro, acervo) {
