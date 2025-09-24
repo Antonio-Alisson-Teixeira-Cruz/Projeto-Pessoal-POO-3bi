@@ -5,34 +5,35 @@ class Acervo {
     }
 
     get livros() {
-        return [... this.#livros]
+        return [...this.#livros]
     }
 
-    quantidadeLivros(){
-        return `Quantidade de livros nos acervo: ${this.#livros.length}.`
+    quantidadeLivros() {
+        return `Quantidade de livros no acervo: ${this.#livros.length}.`
     }
-
     listarLivros() {
-        if(this.#livros.length === 0 ) {
-            return "Não há livros no acervo."
-        } else {
-            return `Livros no acervo: 
-            ${this.#livros.map(livro => livro.mostrarInformacoes()).join("\n\n")}`
-        }
+        if(this.#livros.length === 0) return "Não há livros no acervo."
+        return this.#livros.map(livro => livro.mostrarInformacoes()).join("\n\n")
     }
 
-    adicionarLivro(livro, bibliotecario) {
+   
+    procurarLivro(titulo) {
+        return this.#livros.find(livro => livro.titulo.toLowerCase() === titulo.trim().toLowerCase())
+    }
+
+  
+    adicionarLivro(livro) {
         this.#livros.push(livro)
-        return `O livro ${livro.titulo} foi adicionado ao acervo da biblioteca pelo biliotecário ${bibliotecario.nome}.`
+        return `O livro "${livro.titulo}" foi adicionado ao acervo.`
     }
 
-    removerLivro(livro) {
-        let index = this.#livros.indexOf(livro)
-        if(index !== -1){
-            this.#livros.splice(index, 1)
-            return `O livro ${livro.titulo} foi removido`
+    removerLivro(titulo) {
+        const livro = this.procurarLivro(titulo)
+        if(livro) {
+            this.#livros = this.#livros.filter(l => l !== livro)
+            return `O livro "${titulo}" foi removido do acervo.`
         } else {
-            return `O livro requerido não existe, logo não pode ser removido.`
+            return `Livro "${titulo}" não encontrado no acervo.`
         }
     }
 }
