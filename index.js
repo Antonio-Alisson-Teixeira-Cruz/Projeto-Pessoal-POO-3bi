@@ -33,8 +33,8 @@ Escolha: `)
 
         switch(menu) {
             case "1":
-                if(aluno.acessoPainel) {
-                    console.log(aluno.acessoPainel())
+                if(Aluno.acessoPainel) {
+                    console.log(Aluno.acessoPainel())
                 } else {
                     console.log("Acesso ao painel indisponível.")
                 }
@@ -50,7 +50,7 @@ Escolha: `)
                 if(livro){  
                     console.log(aluno.pegarLivro(livro))
                 } else {
-                    console.log("❌ Livro não encontrado no acervo.")
+                    console.log("Livro não encontrado no acervo.")
                 }
                 break
             case "4":
@@ -100,7 +100,7 @@ Escolha: `)
                 } else {
                     acervo.adicionarLivro(livro)
                 }
-                console.log(`✅ Livro "${titulo}" adicionado.`)
+                console.log(`Livro "${titulo}" adicionado.`)
                 break
             case "3":
                 let remover = prompt("Qual livro deseja remover? ")
