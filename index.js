@@ -128,7 +128,7 @@ while(continuar){
 
     if(classe === "1"){
         let turma = prompt("De que turma você é? ")
-        let aluno = new Aluno(nome, idade, turma) // removido null
+        let aluno = new Aluno(nome, idade, turma) 
         menuAluno(aluno)
     } else if(classe === "2"){
         let bibliotecario = new Bibliotecario(nome, idade)
