@@ -3,7 +3,7 @@ const Usuario = require("./Usuario")
 class Aluno extends Usuario {
     static totalAluno = 0
     #livroEmprestado
-    constructor(nome, idade, livroEmprestado = null, turma) {
+    constructor(nome, idade, turma, livroEmprestado = null) {
         super(nome, idade)
         this.#livroEmprestado = livroEmprestado
         this.turma = turma

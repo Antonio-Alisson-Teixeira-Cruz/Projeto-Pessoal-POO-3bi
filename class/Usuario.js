@@ -20,7 +20,7 @@ class Usuario {
     }
 
     get idade() {
-        return this.#nome
+        return this.#idade
     }
 
     set idade(valor) {

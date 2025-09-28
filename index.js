@@ -9,12 +9,13 @@ let continuar = true
 const acervo = new Acervo([
     new Livro("Dom Quixote", "Miguel de Cervantes", "Romance", 1605, 900, 2),
     new Livro("1984", "George Orwell", "Distopia", 1949, 300, 3),
-    new Livro("O Pequeno Príncipe", "Antoine de Saint-Exupéry", "Infantil", 1943, 100, 1)
+    new Livro("O Pequeno Príncipe", "Antoine de Saint-Exupéry", "Infantil", 1943, 100, 1),
+    new Livro("A cinco passos de você", "Rachel linppincott", 2018, 288, 2)
 ])
 
 if (!acervo.procurarLivro) {
     acervo.procurarLivro = function(titulo){
-        return this.livros.find(l => l.titulo.toLowerCase() === titulo.trim().toLowerCase())
+        return this.livros.find(livro => livro.titulo.toLowerCase() === titulo.trim().toLowerCase())
     }
 }
 
@@ -128,7 +129,7 @@ while(continuar){
 
     if(classe === "1"){
         let turma = prompt("De que turma você é? ")
-        let aluno = new Aluno(nome, idade, turma) 
+        let aluno = new Aluno(nome, idade, turma)
         menuAluno(aluno)
     } else if(classe === "2"){
         let bibliotecario = new Bibliotecario(nome, idade)
