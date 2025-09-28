@@ -34,10 +34,10 @@ Escolha: `)
 
         switch(menu) {
             case "1":
-                console.log(Aluno.acessoPainel())
+                console.log('\n' + Aluno.acessoPainel())
                 break
             case "2":
-                console.log(aluno.mostrarInformacoes())
+                console.log('\n' + aluno.mostrarInformacoes())
                 break
             case "3":
                 console.log("\n--- Acervo ---")
@@ -80,13 +80,15 @@ Escolha: `)
         switch(menu) {
             case "1":
                 if(bibliotecario.listarAcervo) {
+                    console.log('\n')
                     bibliotecario.listarAcervo(acervo)
                 } else {
                     console.log(acervo.listarLivros())
                 }
                 break
             case "2":
-                console.log(Bibliotecario.acessoPainel)
+                console.log(Bibliotecario.acessoPainel())
+                break
             case "3":
                 let titulo = prompt("Título do livro: ")
                 let autor = prompt("Autor: ")
