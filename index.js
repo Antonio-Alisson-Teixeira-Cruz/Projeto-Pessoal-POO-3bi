@@ -10,7 +10,7 @@ const acervo = new Acervo([
     new Livro("Dom Quixote", "Miguel de Cervantes", "Romance", 1605, 900, 2),
     new Livro("1984", "George Orwell", "Distopia", 1949, 300, 3),
     new Livro("O Pequeno Príncipe", "Antoine de Saint-Exupéry", "Infantil", 1943, 100, 1),
-    new Livro("A cinco passos de você", "Rachel linppincott", 2018, 288, 2)
+    new Livro("A cinco passos de você", "Rachel linppincott", "Romance", 2018, 288, 2)
 ])
 
 if (!acervo.procurarLivro) {
@@ -34,11 +34,7 @@ Escolha: `)
 
         switch(menu) {
             case "1":
-                if(Aluno.acessoPainel) {
-                    console.log(Aluno.acessoPainel())
-                } else {
-                    console.log("Acesso ao painel indisponível.")
-                }
+                console.log(Aluno.acessoPainel())
                 break
             case "2":
                 console.log(aluno.mostrarInformacoes())
@@ -75,8 +71,9 @@ function menuBibliotecario(bibliotecario){
     while(menuBibliContinuar){
         let menu = prompt(`\n===== Menu do bibliotecário =====
 1 - Ver acervo
-2 - Adicionar livro
-3 - Remover livro
+2 - Ver painél
+3 - Adicionar livro
+4 - Remover livro
 0 - Sair
 Escolha: `)
 
@@ -89,6 +86,8 @@ Escolha: `)
                 }
                 break
             case "2":
+                console.log(Bibliotecario.acessoPainel)
+            case "3":
                 let titulo = prompt("Título do livro: ")
                 let autor = prompt("Autor: ")
                 let genero = prompt("Gênero: ")
@@ -101,21 +100,19 @@ Escolha: `)
                 } else {
                     acervo.adicionarLivro(livro)
                 }
-                console.log(`Livro "${titulo}" adicionado.`)
+                console.log(`\nLivro "${titulo}" adicionado.\n`)
                 break
-            case "3":
+            case "4":
                 let remover = prompt("Qual livro deseja remover? ")
-                if(bibliotecario.removerLivro){
-                    bibliotecario.removerLivro(acervo, remover)
-                } else {
-                    console.log(acervo.removerLivro(remover))
-                }
+                console.log(`\nO livro ${remover} foi removido`)
+                bibliotecario.removerLivro(acervo, remover)
+                
                 break
             case "0":
                 menuBibliContinuar = false
                 break
             default:
-                console.log("Opção inválida.")
+                console.log("\nOpção inválida.")
         }
     }
 }
@@ -125,7 +122,7 @@ while(continuar){
     console.log("\n=== Sistema da Biblioteca ===")
     let nome = prompt("Digite seu nome: ")
     let idade = prompt("Digite sua idade: ")
-    let classe = prompt("Você é: \n1 - Aluno \n2 - Bibliotecário\nEscolha: ")
+    let classe = prompt("Você é: \n1 - Aluno\n2 - Bibliotecário\nEscolha: ")
 
     if(classe === "1"){
         let turma = prompt("De que turma você é? ")
@@ -135,13 +132,13 @@ while(continuar){
         let bibliotecario = new Bibliotecario(nome, idade)
         menuBibliotecario(bibliotecario)
     } else {
-        console.log("Opção inválida, tente novamente.")
+        console.log("\nOpção inválida, tente novamente.")
     }
 
-    let resp = prompt("Deseja encerrar o sistema? (s/n): ")
+    let resp = prompt("\nDeseja encerrar o sistema? (s/n): ")
     if(resp.toLowerCase() === "s"){
         continuar = false
     }
 }
 
-console.log("Sistema encerrado. Até logo!")
+console.log("\nSistema encerrado. Até logo!")

@@ -8,11 +8,10 @@ class Acervo {
         return [...this.#livros]
     }
 
-    quantidadeLivros() {
-        return `Quantidade de livros no acervo: ${this.#livros.length}.`
-    }
     listarLivros() {
-        if(this.#livros.length === 0) return "Não há livros no acervo."
+        if(this.#livros.length === 0){
+            return "Não há livros no acervo."
+        }
         return this.#livros.map(livro => livro.mostrarInformacoes()).join("\n\n")
     }
 
@@ -30,7 +29,7 @@ class Acervo {
     removerLivro(titulo) {
         const livro = this.procurarLivro(titulo)
         if(livro) {
-            this.#livros = this.#livros.filter(l => l !== livro)
+            this.#livros = this.#livros.filter(livro => livro !== livro)
             return `O livro "${titulo}" foi removido do acervo.`
         } else {
             return `Livro "${titulo}" não encontrado no acervo.`
